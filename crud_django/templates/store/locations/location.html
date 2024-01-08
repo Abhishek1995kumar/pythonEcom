@@ -1,0 +1,89 @@
+{% extends 'store/products/base.html' %}
+
+{% block title %} 
+    Location
+{% endblock title %}
+
+{% block content %} 
+    <script>
+        $(document).ready(function() {
+            let $select1=$('#select1')
+            let $select2=$('#select2')
+            let $select3=$('#select3')
+            let $options1=$select2.find('option')
+           // let $options2=$select3.find('option')
+            $select1.on('change', function() {
+                $select1.html($options1.filter('[value="'+this.value+'"]'));
+            }).trigger('change');
+
+           // $select2.on('change', function() {
+           //     $select2.html($options2.filter('[value="'+this.value+'"]'));
+           // }).trigger('change');
+        });
+    </script>
+    <h1 class="mt-4 text-center">Location Master</h1>
+
+    <div class="mt-4">
+        <div class="col-lg-12 ms-4 d-flex">
+            <div class="col-lg-3">
+                <select name="select" class="form-control" id="">
+                    <option selected disabled="True" value="country">--select person name--</option>
+                    {% for x in persondata %}
+                        <option value="{{x.name}}">{{ x.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <select name="" class="form-control" id="select1 ">
+                    <option selected disabled="True" value="country">--select country name--</option>
+                    {% for x in countrydata %}
+                        <option value="{{x.cid}}">{{ x.country_name }}</option>
+                    {% endfor %}
+                </select>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+                <script type="text/javascript">
+                    width: '100%',
+                    $("#select1").select2({ });
+                </script>
+            </div>
+
+            <div class="col-lg-3">
+                <select name="" class="form-control" id="select2 ">
+                    <option selected disabled="True" value="country">--select state name--</option>
+                    {% for x in statedata %}
+                        <option value="{{x.cid}}">{{ x.state_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <select name="" class="form-control" id="select3">
+                    <option selected disabled="True" value="country">--select state name--</option>
+                    {% for x in citydata %}
+                        <option value="{{x.st_id}}">{{ x.city_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    
+        {% comment %} <table class="table table-danger table-striped">
+            <head>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </head>
+            <tbody>
+                {% for x in countrydata %}
+                <tr>
+                    <td scope="row">{{ x.id }}</td>
+                    <td>{{ x.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         {% endcomment %}
+
+{% endblock content %} 
