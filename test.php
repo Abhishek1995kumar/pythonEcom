@@ -525,5 +525,3 @@
 // mere case me offset=15 hai mtlb record start hogi 16 se aur limit hai 10 ka mtlb 25 tak jyegi
 // $sql = "SELECT * FROM Orders LIMIT 10 OFFSET 15";
 
-
-?>

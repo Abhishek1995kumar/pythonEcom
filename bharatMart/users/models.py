@@ -79,3 +79,7 @@ class User(models.Model):
     @staticmethod
     def get_person_data():
         return User.objects.all()
+    
+
+
+
